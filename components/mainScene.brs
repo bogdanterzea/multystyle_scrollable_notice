@@ -20,5 +20,7 @@ sub alignToCenter(component as Object)
 end sub
 
 sub onButtonSelectedChanged(event as Object)
-    
+    noticeScreen = createObject("roSgNode", "MultystyleNotice")
+    m.top.appendChild(noticeScreen)
+    noticeScreen.setFocus(true)
 end sub

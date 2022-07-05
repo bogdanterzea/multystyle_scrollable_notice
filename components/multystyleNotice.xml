@@ -1,0 +1,11 @@
+<component name="MultystyleNotice" extends="Group" initialFocus="button" >
+
+  <script type = "text/brightscript" uri="multystyleNotice.brs" />
+
+  <children >
+
+    <rectangle id="background" color="0x000000" width="1280" height="720"/>
+
+  </children>
+
+</component>
