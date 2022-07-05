@@ -1,0 +1,17 @@
+title=Multystyle Scrollable Notice
+subtitle=A roku scrollable notice with multiple styles
+major_version=1
+minor_version=0
+build_version=00000
+
+
+splash_screen_sd=pkg:/images/splash.jpg
+
+splash_screen_hd=pkg:/images/splash.jpg
+
+splash_screen_fhd=pkg:/images/splash.jpg
+
+splash_color=#662D91
+splash_min_time=1000
+
+ui_resolutions = "hd"
