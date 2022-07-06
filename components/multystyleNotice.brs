@@ -7,6 +7,7 @@ function onKeyEvent(key as String, press as Boolean) as boolean
             goBackTo("button")
         end if
     end if
+
     return true
 end function
 
