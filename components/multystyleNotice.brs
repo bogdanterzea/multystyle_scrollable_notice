@@ -1,7 +1,17 @@
 sub init()
-    m.BUTTON_ON_FOCUS = 2
+    m.BACK_BUTTON_INDEX = 2
+    m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
     m.navigation = m.top.findNode("navigation")
+    initObservers()
+end sub
+
+sub initObservers()
+    m.navigation.getChild(m.BACK_BUTTON_INDEX).observeField("buttonSelected", "onBackButtonSelected")
+end sub
+
+sub onBackButtonSelected()
+    goBackTo("button")
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as boolean
