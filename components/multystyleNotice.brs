@@ -16,17 +16,16 @@ end sub
 
 function onKeyEvent(key as String, press as Boolean) as boolean
     firstButton = 0
-    lastButton = 2
 
     if press
         if(key = "back")
             goBackTo("button")
         end if
         if key = "left"
-            if m.BUTTON_ON_FOCUS <> firstButton then navigateToLeft()
+            if m.BUTTON_ON_FOCUS <> firstButtonIndex then navigateToLeft()
         end if
         if key = "right"
-            if m.BUTTON_ON_FOCUS <> lastButton then navigateToRight()
+            if m.BUTTON_ON_FOCUS <> m.BACK_BUTTON_INDEX then navigateToRight()
         end if
     end if
 
