@@ -33,7 +33,7 @@ end sub
 
 sub navigateToLeft()
     m.BUTTON_ON_FOCUS -= 1
-    print m.navigation.getChild(m.BUTTON_ON_FOCUS)
+
     m.navigation.getChild(m.BUTTON_ON_FOCUS).setFocus(true)
 end sub
 
