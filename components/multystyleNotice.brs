@@ -1,4 +1,5 @@
 sub init()
+    m.navigation = m.top.findNode("navigation")
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as boolean

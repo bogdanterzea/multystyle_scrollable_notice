@@ -1,7 +1,13 @@
-<component name="MultystyleNotice" extends="Group" initialFocus="button" >
+<component name="MultystyleNotice" extends="Group" initialFocus="backButton" >
   <script type = "text/brightscript" uri="multystyleNotice.brs" />
 
-  <children >
-    <rectangle id="background" color="0x000000" width="1280" height="720"/>
+  <children>
+    <rectangle id="background" color="0x000000" width="1280" height="720" opacity="0.9"/>
+    <multiStyleLabel id="content" width="1280" height="720" horizAlign="center" vertAlign="top" text="DummyText" />  
+    <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
+      <Button id ="upButton" text ="Up" minWidth = "50" />
+      <Button id ="downButton" text ="Down" minWidth = "100" />
+      <Button id ="backButton" text ="Back" minWidth = "100" />
+    </layoutGroup>
   </children>
 </component>
