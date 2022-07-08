@@ -1,9 +1,15 @@
 <component name="MultystyleNotice" extends="Group" initialFocus="backButton" >
   <script type = "text/brightscript" uri="multystyleNotice.brs" />
 
+  <interface>
+    <field id="content" type="string" onChange="onContentChange"/>
+    <field id="title" type="string" onChange="onTitleChange"/>
+  </interface>
+
   <children>
     <rectangle id="background" color="0x000000" width="1280" height="720" opacity="0.9"/>
-    <multiStyleLabel id="content" width="1280" height="720" horizAlign="center" vertAlign="top" text="DummyText" />  
+    <label id="titleContent" translation="[540,60]" text="Dummy title" />
+    <multiStyleLabel id="noticeContent" width="981" height="519" translation="[150,99]" wrap="true" />  
     <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
       <Button id ="upButton" text ="Up" minWidth = "50" />
       <Button id ="downButton" text ="Down" minWidth = "100" />

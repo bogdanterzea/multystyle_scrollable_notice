@@ -2,7 +2,10 @@ sub init()
     m.BACK_BUTTON_INDEX = 2
     m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
+    m.title = m.top.findNode("titleContent")
+    m.content = m.top.findNode("noticeContent")
     m.navigation = m.top.findNode("navigation")
+    
     initObservers()
 end sub
 
@@ -14,18 +17,26 @@ sub onBackButtonSelected()
     goBackTo("button")
 end sub
 
-function onKeyEvent(key as String, press as Boolean) as boolean
-    firstButton = 0
+sub onContentChange(event as Object)
+    contentData = event.getData()
+    m.content.text = contentData
+end sub
 
+sub onTitleChange(event as Object)
+    titleData = event.getData()
+
+end sub
+
+function onKeyEvent(key as String, press as Boolean) as boolean
+    firstButtonIndex = 0
+    
     if press
-        if(key = "back")
+        if key = "back"
             goBackTo("button")
-        end if
-        if key = "left"
-            if m.BUTTON_ON_FOCUS <> firstButtonIndex then navigateToLeft()
-        end if
-        if key = "right"
-            if m.BUTTON_ON_FOCUS <> m.BACK_BUTTON_INDEX then navigateToRight()
+        else if key = "left" and m.BUTTON_ON_FOCUS <> firstButtonIndex
+            navigateToLeft()
+        else if key = "right" and m.BUTTON_ON_FOCUS <> m.BACK_BUTTON_INDEX
+            navigateToRight()
         end if
     end if
 
