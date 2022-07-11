@@ -3,7 +3,7 @@ sub init()
     m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
     m.title = m.top.findNode("titleContent")
-    m.content = m.top.findNode("noticeContent")
+    m.noticeContent = m.top.findNode("noticeContent")
     m.navigation = m.top.findNode("navigation")
     
     initObservers()
@@ -25,7 +25,7 @@ end sub
 
 sub onContentChange(event as Object)
     contentData = event.getData()
-    m.content.text = contentData
+    m.noticeContent.text = contentData
 end sub
 
 sub onTitleChange(event as Object)
