@@ -11,7 +11,7 @@
     <label id="titleContent" translation="[540,60]" text="Dummy title" />
     <multiStyleLabel id="noticeContent" width="981" height="519" translation="[150,99]" wrap="true" />  
     <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
-      <Button id ="upButton" text ="Up" minWidth = "50" />
+      <Button id ="upButton" text ="Up" minWidth = "100" />
       <Button id ="downButton" text ="Down" minWidth = "100" />
       <Button id ="backButton" text ="Back" minWidth = "100" />
     </layoutGroup>

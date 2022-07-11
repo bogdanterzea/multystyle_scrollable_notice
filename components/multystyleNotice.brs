@@ -7,10 +7,16 @@ sub init()
     m.navigation = m.top.findNode("navigation")
     
     initObservers()
+    initTheme()
 end sub
 
 sub initObservers()
     m.navigation.getChild(m.BACK_BUTTON_INDEX).observeField("buttonSelected", "onBackButtonSelected")
+end sub
+
+sub initTheme()
+    m.title.font = "font:LargeBoldSystemFont"
+    m.title.font.size = 32
 end sub
 
 sub onBackButtonSelected()
