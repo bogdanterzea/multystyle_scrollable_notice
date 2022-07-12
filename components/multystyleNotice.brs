@@ -1,5 +1,6 @@
 sub init()
     m.NUMBER_OF_PAGES = 1
+    m.CURRENT_PAGE = m.NUMBER_OF_PAGES
     m.UP_BUTTON_INDEX = 0
     m.DOWN_BUTTON_INDEX = 1
     m.BACK_BUTTON_INDEX = 2
@@ -27,15 +28,33 @@ sub initTheme()
 end sub
 
 sub onUpButtonSelected()
-    print "up"
+    firstPage = 1
+
+    if m.CURRENT_PAGE <> firstPage
+        translateNoticeContentWith(544)
+        m.CURRENT_PAGE -= 1
+    end if
 end sub
 
 sub onDownButtonSelected()
-    print "down"
+    if m.CURRENT_PAGE <> m.NUMBER_OF_PAGES
+        translateNoticeContentWith(-544)
+        m.CURRENT_PAGE += 1
+    end if
 end sub
 
 sub onBackButtonSelected()
     goBackTo("button")
+end sub
+
+sub translateNoticeContentWith(translationValue as Integer)
+    m.noticeContent.height -= translationValue
+
+    contentLeftBorderTranslation = m.noticeContent.translation[0]
+    contentTopBorderTranslation = m.noticeContent.translation[1]
+
+    contentTopBorderTranslation += translationValue
+    m.noticeContent.translation = [contentLeftBorderTranslation, contentTopBorderTranslation]
 end sub
 
 sub onContentChange(event as Object)
@@ -86,18 +105,7 @@ function onKeyEvent(key as String, press as Boolean) as boolean
         else if key = "right" and m.BUTTON_ON_FOCUS <> m.BACK_BUTTON_INDEX
             navigateToRight()
         else if key = "options"
-            contentBoundingRect = m.noticeContent.boundingRect()
-            print contentBoundingRect["height"]
-            print contentBoundingRect["height"]/536
-            ' m.noticeContent.height += 512
-
-            ' contentLeftBorderTranslation = m.noticeContent.translation[0]
-            ' contentTopBorderTranslation = m.noticeContent.translation[1]
-
-            ' contentTopBorderTranslation -= 512
-            ' m.noticeContent.translation = [contentLeftBorderTranslation, contentTopBorderTranslation]
-
-            ' print contentTopBorderTranslation
+            print m.CURRENT_PAGE
         end if
     end if
 
