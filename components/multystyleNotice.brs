@@ -61,7 +61,7 @@ sub updatePagesNumber()
     m.NUMBER_OF_PAGES = Int(exactPagesNumber)
     fractionalPart = exactPagesNumber - m.NUMBER_OF_PAGES
 
-    if fractionalPart >= 0.5 then m.NUMBER_OF_PAGES += 1
+    if fractionalPart > 0 then m.NUMBER_OF_PAGES += 1
 end sub
 
 sub updateNoticeContentHeight(pageHeight as Integer)
