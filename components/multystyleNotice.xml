@@ -11,7 +11,11 @@
     <rectangle id="titleBorder" color="0x16c745" height="32" translation="[537,54]"/>
     <label id="titleContent" translation="[540,54]" />
     <rectangle id="smth" color="0x16c745" width="981" height="536" translation="[150,99]"/>
-    <multiStyleLabel id="noticeContent" width="981" translation="[150,99]" wrap="true" />  
+    <!-- TO DO - find out how to autoscale the gradientfilter with the Roku device resolution -->
+    <maskGroup id="mask" translation="[150,0]" maskUri="pkg:/images/notice_gradient_filter.png" >
+      <multiStyleLabel id="noticeContent" width="981" translation="[0,99]" wrap="true" />
+    </maskGroup>
+    <label id="titleContent" translation="[540,54]" />
     <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
       <Button id ="upButton" text ="Up" minWidth = "100" />
       <Button id ="downButton" text ="Down" minWidth = "100" />
