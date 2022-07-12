@@ -8,7 +8,7 @@
 
   <children>
     <rectangle id="background" color="0x000000" width="1280" height="720" opacity="0.9"/>
-    <label id="titleContent" translation="[540,54]" text="Dummy title" />
+    <label id="titleContent" translation="[540,54]" />
     <multiStyleLabel id="noticeContent" width="981" translation="[150,99]" wrap="true" />  
     <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
       <Button id ="upButton" text ="Up" minWidth = "100" />

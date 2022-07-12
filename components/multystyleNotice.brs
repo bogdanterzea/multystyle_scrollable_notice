@@ -2,9 +2,9 @@ sub init()
     m.BACK_BUTTON_INDEX = 2
     m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
-    m.title = m.top.findNode("titleContent")
-    m.noticeContent = m.top.findNode("noticeContent")
     m.navigation = m.top.findNode("navigation")
+    m.titleContent = m.top.findNode("titleContent")
+    m.noticeContent = m.top.findNode("noticeContent")
     
     initObservers()
     initTheme()
@@ -15,8 +15,8 @@ sub initObservers()
 end sub
 
 sub initTheme()
-    m.title.font = "font:LargeBoldSystemFont"
-    m.title.font.size = 32
+    m.titleContent.font = "font:LargeBoldSystemFont"
+    m.titleContent.font.size = 32
 end sub
 
 sub onBackButtonSelected()
@@ -25,12 +25,12 @@ end sub
 
 sub onContentChange(event as Object)
     contentData = event.getData()
-    m.noticeContent.text = contentData
+    m.noticeContent.text = contentData 
 end sub
 
 sub onTitleChange(event as Object)
     titleData = event.getData()
-
+    m.titleContent.text = titleData
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as boolean
