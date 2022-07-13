@@ -93,6 +93,16 @@ end sub
 sub onTitleChange(event as Object)
     titleData = event.getData()
     m.titleContent.text = titleData
+
+    allignTitle()
+end sub
+
+sub allignTitle()
+    boundingRect = m.titleContent.boundingRect()
+    yTranslation = 54
+    xTranslation = (1280 - boundingRect.width) / 2
+
+    m.titleContent.translation = [ xTranslation, yTranslation ]
 end sub
 
 sub updatePagesNumber()
