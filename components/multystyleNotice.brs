@@ -11,8 +11,22 @@ sub init()
     m.titleContent = m.top.findNode("titleContent")
     m.noticeContent = m.top.findNode("noticeContent")
 
+    initDrawingStyles()
     initObservers()
     initTheme()
+end sub
+
+sub initDrawingStyles()
+    m.noticeContent.drawingStyles = {
+        "LargeBoldRed": {
+            "fontUri": "font:LargeBoldSystemFont"
+            "color": "#FF0000FF"
+            }
+        "MediumBoldGreen": {
+            "fontUri": "font:MediumBoldSystemFont"
+            "color": "#00FF00FF"
+        }
+    }
 end sub
 
 sub initObservers()
