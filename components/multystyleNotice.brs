@@ -7,10 +7,9 @@ sub init()
     m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
     m.navigation = m.top.findNode("navigation")
-    m.titleBorder = m.top.findNode("titleBorder")
+    m.contentMask = m.top.findNode("contentMask")
     m.titleContent = m.top.findNode("titleContent")
     m.noticeContent = m.top.findNode("noticeContent")
-    
 
     initObservers()
     initTheme()
@@ -25,7 +24,32 @@ end sub
 sub initTheme()
     m.titleContent.font = "font:LargeBoldSystemFont"
     m.titleContent.font.size = 32
+
+    scaleContentMask()
 end sub
+
+sub scaleContentMask()
+    widthIndex = 0
+    heightIndex = 1
+
+    scalingFactor = getMaskScalingFactor()
+    scaledWidth = m.contentMask.maskSize[widthIndex] * scalingFactor
+    scaledHeight = m.contentMask.maskSize[heightIndex] * scalingFactor
+
+    m.contentMask.maskSize = [scaledWidth, scaledHeight]
+end sub
+
+function getMaskScalingFactor() as Float
+    developmentResolutionWidth = 1280
+    developmentResolutionHeight = 720
+
+    deviceInfo = createObject("roDeviceInfo")
+    deviceResolutionHeight = deviceInfo.GetUIResolution()["height"]
+
+    scalingFactor = deviceResolutionHeight / developmentResolutionHeight
+
+    return scalingFactor
+end function
 
 sub onUpButtonSelected()
     firstPage = 1
@@ -69,8 +93,6 @@ end sub
 sub onTitleChange(event as Object)
     titleData = event.getData()
     m.titleContent.text = titleData
-
-    updateTitleBorder()
 end sub
 
 sub updatePagesNumber()
@@ -87,15 +109,6 @@ sub updateNoticeContentHeight(pageHeight as Integer)
     m.noticeContent.height = pageHeight
 end sub
 
-sub updateTitleBorder()
-    numberOfExtraPixels = 6
-
-    titleBoundingRect = m.titleContent.boundingRect()
-    titleLabelWidth = titleBoundingRect["width"]
-
-    m.titleBorder.width = titleLabelWidth + numberOfExtraPixels
-end sub
-
 function onKeyEvent(key as String, press as Boolean) as boolean
     if press
         if key = "back"
@@ -104,8 +117,6 @@ function onKeyEvent(key as String, press as Boolean) as boolean
             navigateToLeft()
         else if key = "right" and m.BUTTON_ON_FOCUS <> m.BACK_BUTTON_INDEX
             navigateToRight()
-        else if key = "options"
-            print m.CURRENT_PAGE
         end if
     end if
 
