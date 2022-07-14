@@ -1,14 +1,15 @@
 sub init()
     m.PAGE_HEIGHT = 536
     m.NUMBER_OF_PAGES = 1
-    m.CURRENT_PAGE = m.NUMBER_OF_PAGES
     m.UP_BUTTON_INDEX = 0
     m.DOWN_BUTTON_INDEX = 1
     m.BACK_BUTTON_INDEX = 2
+    m.CURRENT_PAGE = m.NUMBER_OF_PAGES
     m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
     m.navigation = m.top.findNode("navigation")
     m.contentMask = m.top.findNode("contentMask")
+    m.pagingLabel = m.top.findNode("pagingLabel")
     m.titleContent = m.top.findNode("titleContent")
     m.noticeContent = m.top.findNode("noticeContent")
 
@@ -57,6 +58,7 @@ sub onUpButtonSelected()
     if m.CURRENT_PAGE <> firstPage
         translateNoticeContentWith(goUpTranslationValue)
         m.CURRENT_PAGE -= 1
+        updatePagingLabel()
     end if
 end sub
 
@@ -66,6 +68,7 @@ sub onDownButtonSelected()
     if m.CURRENT_PAGE <> m.NUMBER_OF_PAGES
         translateNoticeContentWith(goDownTranslationValue)
         m.CURRENT_PAGE += 1
+        updatePagingLabel()
     end if
 end sub
 
@@ -92,6 +95,7 @@ sub onContentChange(event as Object)
 
     updatePagesNumber()
     updateNoticeContentHeight()
+    updatePagingLabel()
 end sub
 
 sub onTitleChange(event as Object)
@@ -124,6 +128,11 @@ end sub
 
 sub updateNoticeContentHeight()
     m.noticeContent.height = m.PAGE_HEIGHT
+end sub
+
+sub updatePagingLabel()
+    pagingText = Substitute("Page {0}/{1}", m.CURRENT_PAGE.ToStr(), m.NUMBER_OF_PAGES.ToStr())
+    m.pagingLabel.text = pagingText
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as boolean
