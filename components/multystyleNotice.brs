@@ -18,16 +18,7 @@ sub init()
 end sub
 
 sub initDrawingStyles()
-    m.noticeContent.drawingStyles = {
-        "LargeBoldRed": {
-            "fontUri": "font:LargeBoldSystemFont"
-            "color": "#FF0000FF"
-            }
-        "MediumBoldGreen": {
-            "fontUri": "font:MediumBoldSystemFont"
-            "color": "#00FF00FF"
-        }
-    }
+    ' TO DO - initialize drawing styles
 end sub
 
 sub initObservers()
