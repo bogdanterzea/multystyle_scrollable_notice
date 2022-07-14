@@ -12,10 +12,15 @@ sub populateNoticeScreen(noticeScreen as Object)
 
     fileContent = ParseJson(ReadAsciiFile(contentFilePath))
     noticeTitle = fileContent.title
-    noticeContent = fileContent.noticeContent
+    noticeText = fileContent.noticeContent
 
-    noticeScreen.title = noticeTitle
-    noticeScreen.content = noticeContent
+    noticeScreen.content = createContentDictionary(noticeTitle, noticeText)
+end sub
+
+sub createContentDictionary(noticeTitle as String, noticeText as String) as Dynamic
+    content = {titleContent: noticeTitle, textContent: noticeText}
+
+    return content
 end sub
 
 sub setInterface()

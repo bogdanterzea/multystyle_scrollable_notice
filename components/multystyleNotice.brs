@@ -4,6 +4,7 @@ sub init()
     m.UP_BUTTON_INDEX = 0
     m.DOWN_BUTTON_INDEX = 1
     m.BACK_BUTTON_INDEX = 2
+    m.CONTENT_DICTIONARY = {}
     m.CURRENT_PAGE = m.NUMBER_OF_PAGES
     m.BUTTON_ON_FOCUS = m.BACK_BUTTON_INDEX
 
@@ -15,6 +16,7 @@ sub init()
 
     initObservers()
     initTheme()
+    initContentDictionary()
 end sub
 
 sub initObservers()
@@ -28,6 +30,11 @@ sub initTheme()
     m.titleContent.font.size = 32
 
     scaleContentMask()
+end sub
+
+sub initContentDictionary()
+    m.CONTENT_DICTIONARY.titleContent = ""
+    m.CONTENT_DICTIONARY.textContent = ""
 end sub
 
 sub scaleContentMask()
@@ -91,18 +98,16 @@ end sub
 
 sub onContentChange(event as Object)
     contentData = event.getData()
-    m.noticeContent.text = contentData
 
+    m.CONTENT_DICTIONARY.append(contentData)
+
+    m.titleContent.text = m.CONTENT_DICTIONARY.titleContent
+    m.noticeContent.text = m.CONTENT_DICTIONARY.textContent
+
+    allignTitle()
     updatePagesNumber()
     updateNoticeContentHeight()
     updatePagingLabel()
-end sub
-
-sub onTitleChange(event as Object)
-    titleData = event.getData()
-    m.titleContent.text = titleData
-
-    allignTitle()
 end sub
 
 sub allignTitle()

@@ -2,8 +2,7 @@
   <script type = "text/brightscript" uri="multystyleNotice.brs" />
 
   <interface>
-    <field id="content" type="string" onChange="onContentChange"/>
-    <field id="title" type="string" onChange="onTitleChange"/>
+    <field id="content" type="assocarray" onChange="onContentChange" />
   </interface>
 
   <children>
