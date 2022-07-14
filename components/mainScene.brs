@@ -30,7 +30,7 @@ sub alignToCenter(component as Object)
     component.translation = [ centerx, centery ]
 end sub
 
-sub onButtonSelectedChanged(event as Object)
+sub onButtonSelectedChanged()
     noticeScreen = createObject("roSgNode", "MultystyleNotice")
     populateNoticeScreen(noticeScreen)
     m.top.appendChild(noticeScreen)

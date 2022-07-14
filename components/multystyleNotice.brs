@@ -46,7 +46,6 @@ sub scaleContentMask()
 end sub
 
 function getMaskScalingFactor() as Float
-    developmentResolutionWidth = 1280
     developmentResolutionHeight = 720
 
     deviceInfo = createObject("roDeviceInfo")
