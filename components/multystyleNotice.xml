@@ -7,7 +7,7 @@
   </interface>
 
   <children>
-    <rectangle id="background" color="0x000000" width="1920" height="1080" opacity="0.9"/>
+    <rectangle id="background" color="0x000000" width="1920" height="1080" opacity="0.9" />
     <label id="titleContent" />
     <maskGroup id="contentMask" maskSize="[980,634]" maskOffset="[150,0]" maskUri="pkg:/images/notice_gradient_filter.png" >
       <multiStyleLabel id="noticeContent" width="980" translation="[150,99]" wrap="true" />
