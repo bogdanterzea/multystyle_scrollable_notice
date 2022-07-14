@@ -1,23 +1,21 @@
 sub init()
     m.button = m.top.findNode("button")
-    m.noticeScreen = createObject("roSgNode", "MultystyleNotice")
     m.top.setFocus(true)
 
     m.button.observeField("buttonSelected", "onButtonSelectedChanged")
 
-    initNoticeScreen()
     setInterface()
 end sub
 
-sub initNoticeScreen()
+sub populateNoticeScreen(noticeScreen as Object)
     contentFilePath = "pkg:\displayText.json"
 
     fileContent = ParseJson(ReadAsciiFile(contentFilePath))
     noticeTitle = fileContent.title
     noticeContent = fileContent.noticeContent
 
-    m.noticeScreen.title = noticeTitle
-    m.noticeScreen.content = noticeContent
+    noticeScreen.title = noticeTitle
+    noticeScreen.content = noticeContent
 end sub
 
 sub setInterface()
@@ -33,6 +31,8 @@ sub alignToCenter(component as Object)
 end sub
 
 sub onButtonSelectedChanged(event as Object)
-    m.top.appendChild(m.noticeScreen)
-    m.noticeScreen.findNode("backButton").setFocus(true)
+    noticeScreen = createObject("roSgNode", "MultystyleNotice")
+    populateNoticeScreen(noticeScreen)
+    m.top.appendChild(noticeScreen)
+    noticeScreen.setFocus(true)
 end sub
