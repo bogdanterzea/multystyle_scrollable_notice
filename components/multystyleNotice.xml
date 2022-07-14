@@ -7,9 +7,11 @@
   </interface>
 
   <children>
-    <rectangle id="background" color="0x000000" width="1280" height="720" opacity="0.9"/>
-    <label id="titleContent" translation="[540,54]" text="Dummy title" />
-    <multiStyleLabel id="noticeContent" width="981" translation="[150,99]" wrap="true" />  
+    <rectangle id="background" color="0x000000" width="1920" height="1080" opacity="0.9" />
+    <label id="titleContent" />
+    <maskGroup id="contentMask" maskSize="[980,634]" maskOffset="[150,0]" maskUri="pkg:/images/notice_gradient_filter.png" >
+      <multiStyleLabel id="noticeContent" width="980" translation="[150,99]" wrap="true" />
+    </maskGroup>
     <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
       <Button id ="upButton" text ="Up" minWidth = "100" />
       <Button id ="downButton" text ="Down" minWidth = "100" />
