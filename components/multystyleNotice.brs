@@ -1,4 +1,5 @@
 sub init()
+    m.PAGE_HEIGHT = 536
     m.NUMBER_OF_PAGES = 1
     m.CURRENT_PAGE = m.NUMBER_OF_PAGES
     m.UP_BUTTON_INDEX = 0
@@ -86,22 +87,24 @@ sub onBackButtonSelected()
 end sub
 
 sub translateNoticeContentWith(translationValue as Integer)
+    xAxisTranslationIndex = 0
+    yAxisTranslationIndex = 1
+    
     m.noticeContent.height -= translationValue
 
-    contentLeftBorderTranslation = m.noticeContent.translation[0]
-    contentTopBorderTranslation = m.noticeContent.translation[1]
+    contentLeftBorderTranslation = m.noticeContent.translation[xAxisTranslationIndex]
+    contentTopBorderTranslation = m.noticeContent.translation[yAxisTranslationIndex]
 
     contentTopBorderTranslation += translationValue
     m.noticeContent.translation = [contentLeftBorderTranslation, contentTopBorderTranslation]
 end sub
 
 sub onContentChange(event as Object)
-    pageHeight = 536
     contentData = event.getData()
     m.noticeContent.text = contentData
 
     updatePagesNumber()
-    updateNoticeContentHeight(pageHeight)
+    updateNoticeContentHeight()
 end sub
 
 sub onTitleChange(event as Object)
@@ -112,16 +115,17 @@ sub onTitleChange(event as Object)
 end sub
 
 sub allignTitle()
-    boundingRect = m.titleContent.boundingRect()
+    titleBoundingRectangle = m.titleContent.boundingRect()
     yTranslation = 54
-    xTranslation = (1280 - boundingRect.width) / 2
+    xTranslation = (1280 - titleBoundingRectangle.width) / 2
 
     m.titleContent.translation = [ xTranslation, yTranslation ]
 end sub
 
 sub updatePagesNumber()
     contentBoundingRect = m.noticeContent.boundingRect()
-    exactPagesNumber = contentBoundingRect["height"]/536
+    noticeContentHeight = contentBoundingRect["height"]
+    exactPagesNumber = noticeContentHeight / m.PAGE_HEIGHT
 
     m.NUMBER_OF_PAGES = Int(exactPagesNumber)
     fractionalPart = exactPagesNumber - m.NUMBER_OF_PAGES
@@ -129,8 +133,8 @@ sub updatePagesNumber()
     if fractionalPart > 0 then m.NUMBER_OF_PAGES += 1
 end sub
 
-sub updateNoticeContentHeight(pageHeight as Integer)
-    m.noticeContent.height = pageHeight
+sub updateNoticeContentHeight()
+    m.noticeContent.height = m.PAGE_HEIGHT
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as boolean
