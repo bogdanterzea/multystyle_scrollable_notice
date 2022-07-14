@@ -12,13 +12,8 @@ sub init()
     m.titleContent = m.top.findNode("titleContent")
     m.noticeContent = m.top.findNode("noticeContent")
 
-    initDrawingStyles()
     initObservers()
     initTheme()
-end sub
-
-sub initDrawingStyles()
-    ' TO DO - initialize drawing styles
 end sub
 
 sub initObservers()
@@ -58,16 +53,18 @@ end function
 
 sub onUpButtonSelected()
     firstPage = 1
-
+    goUpTranslationValue = 544
     if m.CURRENT_PAGE <> firstPage
-        translateNoticeContentWith(544)
+        translateNoticeContentWith(goUpTranslationValue)
         m.CURRENT_PAGE -= 1
     end if
 end sub
 
 sub onDownButtonSelected()
+    goDownTranslationValue = -544
+
     if m.CURRENT_PAGE <> m.NUMBER_OF_PAGES
-        translateNoticeContentWith(-544)
+        translateNoticeContentWith(goDownTranslationValue)
         m.CURRENT_PAGE += 1
     end if
 end sub
@@ -105,9 +102,11 @@ sub onTitleChange(event as Object)
 end sub
 
 sub allignTitle()
+    screenWidth = 1280
+
     titleBoundingRectangle = m.titleContent.boundingRect()
     yTranslation = 54
-    xTranslation = (1280 - titleBoundingRectangle.width) / 2
+    xTranslation = (screenWidth - titleBoundingRectangle.width) / 2
 
     m.titleContent.translation = [ xTranslation, yTranslation ]
 end sub
