@@ -26,6 +26,7 @@ end sub
 sub initTheme()
     m.titleContent.font = "font:LargeBoldSystemFont"
     m.titleContent.font.size = 32
+    m.pagingLabel.font.size = 18
 
     scaleContentMask()
 end sub

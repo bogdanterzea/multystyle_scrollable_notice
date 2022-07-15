@@ -21,15 +21,14 @@ sub createContentDictionary(noticeTitle as String, noticeText as String) as Dyna
     content = {titleContent: noticeTitle, textContent: noticeText}
     content.drawingStyles = createDrawingStyles()
 
-    print content
     return content
 end sub
 
 function createDrawingStyles() as Object
     drawingStyles = {
         "DrawingFontExample": {
-            "fontSize": 28
-            "fontUri": "font:LargeSystemFont"
+            "fontSize": "32"
+            "fontUri": "pkg:/images/CustomF.otf"
             "color": "#FF0000FF"
         }
     }

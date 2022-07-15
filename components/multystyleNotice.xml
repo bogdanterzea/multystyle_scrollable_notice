@@ -16,6 +16,6 @@
       <Button id="downButton" text="Down" minWidth="100" />
       <Button id="backButton" text="Back" minWidth="100" />
     </layoutGroup>
-    <label id="pagingLabel" translation="[636,648]" />
+    <label id="pagingLabel" translation="[150,648]" />
   </children>
 </component>
