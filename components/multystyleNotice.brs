@@ -96,6 +96,7 @@ sub onContentChange(event as Object)
 
     m.titleContent.text = contentDictionary.titleContent
     m.noticeContent.text = contentDictionary.textContent
+    m.noticeContent.drawingStyles = contentDictionary.drawingStyles
 
     allignTitle()
     updatePagesNumber()
@@ -107,10 +108,10 @@ function createContentDictionary(contentData) as Object
     contentDictionary = {
         titleContent: ""
         textContent: ""
-        drawingStyles: ""
+        drawingStyles: {}
     }
     contentDictionary.append(contentData)
-    
+
     return contentDictionary
 end function
 

@@ -19,9 +19,23 @@ end sub
 
 sub createContentDictionary(noticeTitle as String, noticeText as String) as Dynamic
     content = {titleContent: noticeTitle, textContent: noticeText}
+    content.drawingStyles = createDrawingStyles()
 
+    print content
     return content
 end sub
+
+function createDrawingStyles() as Object
+    drawingStyles = {
+        "DrawingFontExample": {
+            "fontSize": 28
+            "fontUri": "font:LargeSystemFont"
+            "color": "#FF0000FF"
+        }
+    }
+    
+    return drawingStyles
+end function
 
 sub setInterface()
     m.top.backgroundURI = "pkg:/images/background.jpg"
