@@ -28,7 +28,7 @@ function createDrawingStyles() as Object
     drawingStyles = {
         "DrawingFontExample": {
             "fontSize": "32"
-            "fontUri": "pkg:/images/CustomF.otf"
+            "fontUri": "pkg:/fonts/CustomF.otf"
             "color": "#FF0000FF"
         }
     }
