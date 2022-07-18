@@ -95,10 +95,7 @@ sub onContentChange(event as Object)
 
     contentDictionary = createContentDictionary(contentData)
 
-    m.titleContent.text = contentDictionary.titleContent
-    m.noticeContent.text = contentDictionary.textContent
-    m.noticeContent.drawingStyles = contentDictionary.drawingStyles
-
+    populateNoticeData(contentDictionary)
     allignTitle()
     updatePagesNumber()
     updateNoticeContentHeight()
@@ -115,6 +112,12 @@ function createContentDictionary(contentData) as Object
 
     return contentDictionary
 end function
+
+sub populateNoticeData(contentDictionary)
+    m.titleContent.text = contentDictionary.titleContent
+    m.noticeContent.text = contentDictionary.textContent
+    m.noticeContent.drawingStyles = contentDictionary.drawingStyles
+end sub
 
 sub allignTitle()
     screenWidth = 1280
