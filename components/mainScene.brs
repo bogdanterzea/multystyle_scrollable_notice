@@ -12,11 +12,29 @@ sub populateNoticeScreen(noticeScreen as Object)
 
     fileContent = ParseJson(ReadAsciiFile(contentFilePath))
     noticeTitle = fileContent.title
-    noticeContent = fileContent.noticeContent
+    noticeText = fileContent.noticeContent
 
-    noticeScreen.title = noticeTitle
-    noticeScreen.content = noticeContent
+    noticeScreen.content = createContentDictionary(noticeTitle, noticeText)
 end sub
+
+sub createContentDictionary(noticeTitle as String, noticeText as String) as Dynamic
+    content = {titleContent: noticeTitle, textContent: noticeText}
+    content.drawingStyles = createDrawingStyles()
+
+    return content
+end sub
+
+function createDrawingStyles() as Object
+    drawingStyles = {
+        "DrawingFontExample": {
+            "fontSize": "32"
+            "fontUri": "pkg:/fonts/CustomF.otf"
+            "color": "#FF0000FF"
+        }
+    }
+    
+    return drawingStyles
+end function
 
 sub setInterface()
     m.top.backgroundURI = "pkg:/images/background.jpg"

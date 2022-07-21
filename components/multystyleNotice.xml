@@ -2,20 +2,20 @@
   <script type = "text/brightscript" uri="multystyleNotice.brs" />
 
   <interface>
-    <field id="content" type="string" onChange="onContentChange"/>
-    <field id="title" type="string" onChange="onTitleChange"/>
+    <field id="content" type="assocarray" onChange="onContentChange" />
   </interface>
 
   <children>
-    <rectangle id="background" color="0x000000" width="1920" height="1080" opacity="0.9" />
+    <rectangle id="background" color="0x000000" width="1280" height="720" opacity="0.9" />
     <label id="titleContent" />
     <maskGroup id="contentMask" maskSize="[980,634]" maskOffset="[150,0]" maskUri="pkg:/images/notice_gradient_filter.png" >
       <multiStyleLabel id="noticeContent" width="980" translation="[150,99]" wrap="true" />
     </maskGroup>
     <layoutGroup id="navigation" translation="[300,630]" itemSpacings="[30,270]" layoutDirection="horiz">
-      <Button id ="upButton" text ="Up" minWidth = "100" />
-      <Button id ="downButton" text ="Down" minWidth = "100" />
-      <Button id ="backButton" text ="Back" minWidth = "100" />
+      <button id="upButton" text="Up" minWidth="100" />
+      <button id="downButton" text="Down" minWidth="100" />
+      <button id="backButton" text="Back" minWidth="100" />
     </layoutGroup>
+    <label id="pagingLabel" translation="[150,648]" />
   </children>
 </component>
